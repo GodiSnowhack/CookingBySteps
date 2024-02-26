@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Enter_item"
+        android:title="Войти" />
+    <item
+        android:id="@+id/Exit_item"
+        android:title="Выход" />
+    <!-- Добавьте другие элементы меню, если нужно -->
+</menu>
