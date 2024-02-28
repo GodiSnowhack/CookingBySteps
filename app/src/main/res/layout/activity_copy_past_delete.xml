@@ -29,13 +29,7 @@
             android:inputType="text" />
     </LinearLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view_id"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header_layout"
-        app:menu="@menu/nav_menu" />
+    <include layout="@layout/navigation_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

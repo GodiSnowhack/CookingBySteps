@@ -50,31 +50,7 @@ public class RegistrationActivity extends AppCompatActivity {
         AuthEditText = findViewById(R.id.AuthEmailEnter);
         NavigationView myNavView = findViewById(R.id.nav_view_id); // Проверьте правильность идентификатора
 
-
-
-        myNavView.setNavigationItemSelectedListener(new NavigationView
-                .OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-
-                if (id == R.id.Exit_item) {
-                    Toast.makeText(RegistrationActivity.this, "Выход из приложения",
-                            Toast.LENGTH_SHORT).show();
-                    finish();
-
-                    return true;
-                } else if (id == R.id.Enter_item) {
-                    Toast.makeText(RegistrationActivity.this, "Выход в меню",
-                            Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-
-                return false;
-            }
-        });
+        NavigationManager.setupNavigation(myNavView, this);
 
         RegistrationPagerAdapter adapter = new RegistrationPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new AuthFragment(), "Авторизация");

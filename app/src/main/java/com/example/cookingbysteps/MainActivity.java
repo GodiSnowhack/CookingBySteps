@@ -20,36 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         NavigationView myNavView = findViewById(R.id.nav_view_id);
-        myNavView.setNavigationItemSelectedListener(new NavigationView
-                .OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
 
-                if (id == R.id.Exit_item) {
-                    Toast.makeText(MainActivity.this, "Выход из приложения",
-                            Toast.LENGTH_SHORT).show();
-                    finish();
-
-                    return true;
-                }
-                if (id == R.id.Enter_item) {
-                    Toast.makeText(MainActivity.this, "Переход к входу",
-                            Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                if (id == R.id.CopyPastDelete_item) {
-                    Toast.makeText(MainActivity.this, "Переход к CopyPastDelete",
-                            Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, CopyPastDeleteActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-
-                return false;
-            }
-        });
+        NavigationManager.setupNavigation(myNavView, this);
     }
 }
