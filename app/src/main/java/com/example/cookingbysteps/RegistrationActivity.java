@@ -7,9 +7,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -23,12 +31,27 @@ import com.example.cookingbusteps.fragments.RegistrationFragment;
 
 public class RegistrationActivity extends AppCompatActivity {
 
+    private EditText RegisusernameEditText, RegisemailEditText, RegispasswordEditText, AuthPasswordEditText, AuthEditText;
+    private EditText currentEditText; // Добавим переменную для хранения ссылки на текущий EditText
+    private Button registrationButton;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        NavigationView myNavView = findViewById(R.id.nav_view_id);
+        RegisusernameEditText = findViewById(R.id.RegisUsernameEnter);
+        RegisemailEditText = findViewById(R.id.RegisEmailEnter);
+        RegispasswordEditText = findViewById(R.id.RegisPasswordEnter);
+        registrationButton = findViewById(R.id.RegistrationButton);
+
+        AuthPasswordEditText = findViewById(R.id.AuthPasswordEnter);
+        AuthEditText = findViewById(R.id.AuthEmailEnter);
+        NavigationView myNavView = findViewById(R.id.nav_view_id); // Проверьте правильность идентификатора
+
+
+
         myNavView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
             @Override
@@ -42,9 +65,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     return true;
                 } else if (id == R.id.Enter_item) {
-                    Toast.makeText(RegistrationActivity.this, "Переход к входу",
+                    Toast.makeText(RegistrationActivity.this, "Выход в меню",
                             Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegistrationActivity.this, RegistrationActivity.class);
+                    Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
                     startActivity(intent);
                     return true;
                 }
@@ -52,6 +75,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 return false;
             }
         });
+
         RegistrationPagerAdapter adapter = new RegistrationPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new AuthFragment(), "Авторизация");
         adapter.addFragment(new RegistrationFragment(), "Регистрация");
@@ -61,8 +85,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-
     }
+
+
+
+
+
     public class RegistrationPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();

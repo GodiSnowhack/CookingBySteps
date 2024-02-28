@@ -32,10 +32,18 @@ public class MainActivity extends AppCompatActivity {
                     finish();
 
                     return true;
-                } else if (id == R.id.Enter_item) {
+                }
+                if (id == R.id.Enter_item) {
                     Toast.makeText(MainActivity.this, "Переход к входу",
                             Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                if (id == R.id.CopyPastDelete_item) {
+                    Toast.makeText(MainActivity.this, "Переход к CopyPastDelete",
+                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, CopyPastDeleteActivity.class);
                     startActivity(intent);
                     return true;
                 }

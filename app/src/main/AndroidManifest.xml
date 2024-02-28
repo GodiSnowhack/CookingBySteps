@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CookingBySteps"
         tools:targetApi="31">
         <activity
+            android:name=".CopyPastDeleteActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
         <activity

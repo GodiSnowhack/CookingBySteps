@@ -5,15 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+    <LinearLayout
+        android:layout_width="361dp"
+        android:layout_height="381dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.778"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.332" />
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/RegisUsernameEnter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="Введите имя пользователя"
+            android:inputType="text"
+            android:longClickable="true"/>
+
+        <EditText
+            android:id="@+id/RegisEmailEnter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Введите электронную почту"
+            android:inputType="text"
+            android:longClickable="true"/>
+
+        <EditText
+            android:id="@+id/RegisPasswordEnter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Введите пароль"
+            android:inputType="text"
+            android:password="true"
+            tools:ignore="Deprecated"
+            android:longClickable="true"/>
+
+        <Button
+            android:id="@+id/RegistrationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Зарегистрироваться" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

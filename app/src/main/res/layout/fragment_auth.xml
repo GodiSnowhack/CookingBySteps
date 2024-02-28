@@ -19,27 +19,35 @@
         tools:ignore="ExtraText,MissingConstraints">
 
         <EditText
-            android:id="@+id/emailText"
+            android:id="@+id/AuthEmailEnter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Email"
-            android:inputType="text" />
+            android:inputType="text"
+            android:layout_marginBottom="16dp"
+            tools:ignore="TextFields"
+            android:longClickable="true"/>
 
         <EditText
-            android:id="@+id/PasswordText"
+            android:id="@+id/AuthPasswordEnter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Password"
             android:inputType="text"
-            android:password="true" />
+            android:password="true"
+            tools:ignore="Deprecated"
+            android:layout_marginBottom="16dp"
+            android:longClickable="true"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Войти" />
+            android:text="Войти"
+            android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,5 +6,9 @@
     <item
         android:id="@+id/Exit_item"
         android:title="Выход" />
+
+    <item
+        android:id="@+id/CopyPastDelete_item"
+        android:title="CopyPastDelete"/>
     <!-- Добавьте другие элементы меню, если нужно -->
 </menu>
