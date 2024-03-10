@@ -6,30 +6,99 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".RegistrationActivity"
-        tools:ignore="RedundantNamespace">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/ChangeMode"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:tabIndicatorColor="@android:color/white"
-            app:tabTextColor="@android:color/white" />
+            android:text="Сменить"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.939" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
+        <LinearLayout
+            android:id="@+id/RegisLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <EditText
+                android:id="@+id/UsernameEditRegis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/EmailEditRegis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/PasswordEditRegis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Name" />
+
+            <Button
+                android:id="@+id/RegisButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:text="Зарегистрироваться" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LoginLayout"
+            android:layout_width="409dp"
+            android:layout_height="612dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp"
+            tools:ignore="MissingConstraints">
+
+            <EditText
+                android:id="@+id/EmailEditLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:ems="10"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/PasswordEditLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:ems="10"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/LoginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:text="Войти" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include layout="@layout/navigation_menu" />
 

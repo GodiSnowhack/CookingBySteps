@@ -8,7 +8,9 @@
         android:title="Выход" />
 
     <item
-        android:id="@+id/CopyPastDelete_item"
-        android:title="CopyPastDelete"/>
+        android:id="@+id/Exit_acc"
+        android:title="Выход из аккаунта"/>
+
+
     <!-- Добавьте другие элементы меню, если нужно -->
 </menu>
