@@ -39,21 +39,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         NavigationView myNavView = findViewById(R.id.nav_view_id);
+        View headerView = myNavView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.UsernameText);
 
-        if (username != null && email != null) {
-            // Пользователь авторизован
-            Toast.makeText(this, "User is logged in", Toast.LENGTH_SHORT).show();
-
-            // Обновляем текст TextView в навигации
-            View headerView = myNavView.getHeaderView(0);
-            TextView navUsername = headerView.findViewById(R.id.UsernameText);
-            navUsername.setText(username);
-        } else {
-            // Пользователь не авторизован
-            Toast.makeText(this, "User is not logged in", Toast.LENGTH_SHORT).show();
-        }
-
-        NavigationManager.setupNavigation(myNavView, this);
+        NavigationManager.setupNavigation(myNavView, this, navUsername);
 
         RegisLayout = findViewById(R.id.RegisLayout);
         LoginLayout = findViewById(R.id.LoginLayout);

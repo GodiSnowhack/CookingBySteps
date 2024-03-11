@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,9 +15,16 @@ import com.google.android.material.navigation.NavigationView;
 public class NavigationManager {
     private static SharedPreferences sharedPreferences;
 
+    public static String getUsername(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("user_data", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("username", "");
+    }
 
+    public static void setupNavigation(NavigationView navigationView, Activity activity, TextView navUsername) {
 
-    public static void setupNavigation(NavigationView navigationView, Activity activity) {
+        String username = getUsername(activity);
+        navUsername.setText(username);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
