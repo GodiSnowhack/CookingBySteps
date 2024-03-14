@@ -1,6 +1,8 @@
 package com.example.cookingbysteps;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +25,7 @@ import retrofit2.Response;
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText UsernameEditRegis, EmailEditRegis, PasswordEditRegis, EmailEditLogin, PasswordEditLogin;
-    private Button RegisButton, LoginButton, ChangeMode;
+    final Activity activity = this;
     View RegisLayout, LoginLayout;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -32,9 +34,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
-        String username = sharedPreferences.getString("username", null);
-        String email = sharedPreferences.getString("email", null);
+
 
 
 
@@ -47,42 +47,29 @@ public class RegistrationActivity extends AppCompatActivity {
         RegisLayout = findViewById(R.id.RegisLayout);
         LoginLayout = findViewById(R.id.LoginLayout);
 
-        ChangeMode = findViewById(R.id.ChangeMode);
-        ChangeMode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (RegisLayout.getVisibility() == View.VISIBLE) {
-                    RegisLayout.setVisibility(View.GONE);
-                    LoginLayout.setVisibility(View.VISIBLE);
-                } else { // Иначе, если LoginLayout видим, то скрываем его и показываем RegisLayout
-                    RegisLayout.setVisibility(View.VISIBLE);
-                    LoginLayout.setVisibility(View.GONE);
-                }
+        Button changeMode = findViewById(R.id.ChangeMode);
+        changeMode.setOnClickListener(v -> {
+            if (RegisLayout.getVisibility() == View.VISIBLE) {
+                RegisLayout.setVisibility(View.GONE);
+                LoginLayout.setVisibility(View.VISIBLE);
+            } else { // Иначе, если LoginLayout видим, то скрываем его и показываем RegisLayout
+                RegisLayout.setVisibility(View.VISIBLE);
+                LoginLayout.setVisibility(View.GONE);
             }
         });
 
         UsernameEditRegis = findViewById(R.id.UsernameEditRegis);
         EmailEditRegis = findViewById(R.id.EmailEditRegis);
         PasswordEditRegis = findViewById(R.id.PasswordEditRegis);
-        RegisButton = findViewById(R.id.RegisButton);
+        Button regisButton = findViewById(R.id.RegisButton);
 
-        RegisButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                register();
-            }
-        });
+        regisButton.setOnClickListener(v -> register());
 
         EmailEditLogin = findViewById(R.id.EmailEditLogin);
         PasswordEditLogin = findViewById(R.id.PasswordEditLogin);
-        LoginButton = findViewById(R.id.LoginButton);
+        Button loginButton = findViewById(R.id.LoginButton);
 
-        LoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+        loginButton.setOnClickListener(v -> login());
     }
 
     private void login() {
@@ -95,10 +82,13 @@ public class RegistrationActivity extends AppCompatActivity {
         Call<LoginResponse> call = service.login(request);
 
         call.enqueue(new Callback<LoginResponse>() {
+
+
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
                     LoginResponse loginResponse = response.body();
+                    assert loginResponse != null;
                     String username = loginResponse.getUsername();
                     String email = loginResponse.getEmail();
 
@@ -107,14 +97,20 @@ public class RegistrationActivity extends AppCompatActivity {
                     editor.putString("username", username);
                     editor.putString("email", email);
                     editor.apply();
+
                     Toast.makeText(RegistrationActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(activity, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    activity.startActivity(intent);
+
                 } else {
                     Toast.makeText(RegistrationActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
             }
         });
@@ -133,12 +129,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 Toast.makeText(RegistrationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 String errorMessage = "Registration failed: " + t.getLocalizedMessage();
                 Log.e("RegistrationActivity", errorMessage);
                 Toast.makeText(RegistrationActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
