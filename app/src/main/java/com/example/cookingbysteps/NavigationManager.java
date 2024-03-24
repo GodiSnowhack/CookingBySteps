@@ -46,7 +46,12 @@ public class NavigationManager {
                     editor.apply();
                     Toast.makeText(activity, "Выход из аккаунта", Toast.LENGTH_SHORT).show();
                     return true;
+                } else if (id == R.id.Create_recip){
+                    Toast.makeText(activity, "Создать рецепт", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(activity, CreateRecipePage.class);
+                    activity.startActivity(intent);
                 }
+
 
                 return false;
             }

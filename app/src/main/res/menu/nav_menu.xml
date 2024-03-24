@@ -11,6 +11,10 @@
         android:id="@+id/Exit_acc"
         android:title="Выход из аккаунта"/>
 
+    <item
+        android:id="@+id/Create_recip"
+        android:title="Создать рецепт"/>
+
 
     <!-- Добавьте другие элементы меню, если нужно -->
 </menu>
