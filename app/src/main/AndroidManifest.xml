@@ -28,7 +28,7 @@
             android:name=".CopyPastDeleteActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".RegistrationLogin.RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

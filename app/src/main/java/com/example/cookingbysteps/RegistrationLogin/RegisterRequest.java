@@ -1,4 +1,4 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.RegistrationLogin;
 
 import com.google.gson.annotations.SerializedName;
 

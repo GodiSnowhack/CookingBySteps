@@ -1,4 +1,4 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.RegistrationLogin;
 
 import android.view.ViewGroup;
 

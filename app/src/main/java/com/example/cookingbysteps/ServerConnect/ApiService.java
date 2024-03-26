@@ -1,4 +1,8 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.ServerConnect;
+
+import com.example.cookingbysteps.RegistrationLogin.LoginRequest;
+import com.example.cookingbysteps.RegistrationLogin.LoginResponse;
+import com.example.cookingbysteps.RegistrationLogin.RegisterRequest;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

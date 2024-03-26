@@ -1,4 +1,4 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.RegistrationLogin;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,6 +15,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cookingbysteps.ServerConnect.ApiClient;
+import com.example.cookingbysteps.ServerConnect.ApiService;
+import com.example.cookingbysteps.MainActivity;
+import com.example.cookingbysteps.NavigationManager;
+import com.example.cookingbysteps.R;
 import com.google.android.material.navigation.NavigationView;
 
 import okhttp3.ResponseBody;

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.cookingbysteps.RegistrationLogin.RegistrationActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class NavigationManager {
