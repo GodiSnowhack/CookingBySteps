@@ -35,7 +35,7 @@ public class IngredientsFragment extends Fragment {
         // Inflate the layout for this fragment
         rows = new ArrayList<>();
 
-        // Добавляем первую строку
+        // Без этой строки все ломается
         rows.add(new TableAdapter.TableRow("Первый продукт", "0"));
 
         recyclerView = view.findViewById(R.id.recyclerView);

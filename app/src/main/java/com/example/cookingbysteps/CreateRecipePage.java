@@ -1,8 +1,10 @@
 package com.example.cookingbysteps;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -11,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.cookingbysteps.fragment.DescriptionFragment;
 import com.example.cookingbysteps.fragment.IngredientsFragment;
 import com.example.cookingbysteps.fragment.StepsFragment;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class CreateRecipePage extends AppCompatActivity {
@@ -34,6 +37,10 @@ public class CreateRecipePage extends AppCompatActivity {
         vpAdapter.addFragment(new StepsFragment(),"Шаги");
         viewPager.setAdapter(vpAdapter);
 
+        NavigationView myNavView = findViewById(R.id.nav_view_id);
+        View headerView = myNavView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.UsernameText);
 
+        NavigationManager.setupNavigation(myNavView, this, navUsername);
     }
 }

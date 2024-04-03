@@ -41,9 +41,10 @@
 
         <ImageView
             android:id="@+id/ReceptImage"
-            android:layout_width="305dp"
-            android:layout_height="147dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:clickable="true"
+            android:scaleType="fitCenter"
             android:onClick="onImageViewClicked"
             android:src="@android:drawable/ic_menu_gallery"
             app:layout_constraintBottom_toBottomOf="parent"

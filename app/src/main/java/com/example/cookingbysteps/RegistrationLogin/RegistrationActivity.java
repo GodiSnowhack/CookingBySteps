@@ -2,7 +2,7 @@ package com.example.cookingbysteps.RegistrationLogin;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,11 +15,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cookingbysteps.ServerConnect.ApiClient;
-import com.example.cookingbysteps.ServerConnect.ApiService;
-import com.example.cookingbysteps.MainActivity;
 import com.example.cookingbysteps.NavigationManager;
 import com.example.cookingbysteps.R;
+import com.example.cookingbysteps.ServerConnect.ApiClient;
+import com.example.cookingbysteps.ServerConnect.ApiService;
 import com.google.android.material.navigation.NavigationView;
 
 import okhttp3.ResponseBody;
@@ -87,38 +86,35 @@ public class RegistrationActivity extends AppCompatActivity {
         Call<LoginResponse> call = service.login(request);
 
         call.enqueue(new Callback<LoginResponse>() {
-
-
             @Override
-            public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
                     LoginResponse loginResponse = response.body();
-                    assert loginResponse != null;
-                    String username = loginResponse.getUsername();
-                    String email = loginResponse.getEmail();
+                    if (loginResponse != null) {
+                        // Сохраняем имя пользователя, электронную почту и userID в SharedPreferences
+                        saveUserData(loginResponse.getUsername(), loginResponse.getEmail(), loginResponse.getUserId());
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("username", username);
-                    editor.putString("email", email);
-                    editor.apply();
-
-                    Toast.makeText(RegistrationActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(activity, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    activity.startActivity(intent);
-
+                        Toast.makeText(RegistrationActivity.this, "Login successful. Welcome, " + loginResponse.getUsername(), Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(RegistrationActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void saveUserData(String username, String email, int userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.putString("email", email);
+        editor.putInt("userID", userId);
+        editor.apply();
     }
 
 

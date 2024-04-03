@@ -12,9 +12,8 @@ public class LoginResponse {
     @SerializedName("Email")
     private String email;
 
-    public String getMessage() {
-        return message;
-    }
+    @SerializedName("UserID")
+    private Integer userID;
 
     public String getUsername() {
         return username;
@@ -22,5 +21,9 @@ public class LoginResponse {
 
     public String getEmail() {
         return email;
+    }
+
+    public Integer getUserId() {
+        return userID;
     }
 }
