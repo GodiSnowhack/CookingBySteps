@@ -71,6 +71,10 @@ public class StepsFragment extends Fragment {
         adapter.setOnImageClickListener((StepAdapter.OnImageClickListener) listener);
     }
 
+    public List<StepAdapter.Step> getSteps() {
+        return steps;
+    }
+
     public void onImageClick(int position) {
         // Обработка нажатия на изображение для элемента списка с позицией position
         // Здесь вы можете выполнить дополнительные действия, связанные с этой позицией

@@ -1,5 +1,7 @@
 package com.example.cookingbysteps;
 
+import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -12,11 +14,9 @@ public class VPadapter extends FragmentPagerAdapter {
 
     private final ArrayList<Fragment> fragmentArrayList =  new ArrayList<>();
     private final ArrayList<String> fragmentTitle = new ArrayList<>();
-
     public VPadapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
-
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -29,7 +29,6 @@ public class VPadapter extends FragmentPagerAdapter {
     }
 
     public void addFragment(Fragment fragment, String title){
-
         fragmentArrayList.add(fragment);
         fragmentTitle.add(title);
     }
