@@ -1,19 +1,20 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.CreateRecipe;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.cookingbysteps.fragment.CreateRecipeFragment;
-import com.example.cookingbysteps.fragment.DescriptionFragment;
-import com.example.cookingbysteps.fragment.IngredientsFragment;
-import com.example.cookingbysteps.fragment.StepsFragment;
+import com.example.cookingbysteps.CreateRecipe.CreateRecipeFragment;
+import com.example.cookingbysteps.CreateRecipe.DescriptionFragment;
+import com.example.cookingbysteps.CreateRecipe.IngredientsFragment;
+import com.example.cookingbysteps.CreateRecipe.StepsFragment;
+import com.example.cookingbysteps.NavigationManager;
+import com.example.cookingbysteps.R;
+import com.example.cookingbysteps.VPadapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 

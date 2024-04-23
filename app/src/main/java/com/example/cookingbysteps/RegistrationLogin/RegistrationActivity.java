@@ -29,7 +29,7 @@ import retrofit2.Response;
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText UsernameEditRegis, EmailEditRegis, PasswordEditRegis, EmailEditLogin, PasswordEditLogin;
-    final Activity activity = this;
+
     View RegisLayout, LoginLayout;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -37,10 +37,6 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
-
-
-
 
         NavigationView myNavView = findViewById(R.id.nav_view_id);
         View headerView = myNavView.getHeaderView(0);
@@ -113,9 +109,10 @@ public class RegistrationActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", username);
         editor.putString("email", email);
-        editor.putInt("userID", userId);
+        editor.putInt("userID", userId); // исправлено на "userID"
         editor.apply();
     }
+
 
 
     private void register() {

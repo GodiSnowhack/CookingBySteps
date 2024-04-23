@@ -1,15 +1,19 @@
 package com.example.cookingbysteps;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.cookingbysteps.CreateRecipe.CreateRecipePage;
+import com.example.cookingbysteps.RegistrationLogin.LoginResponse;
 import com.example.cookingbysteps.RegistrationLogin.RegistrationActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,8 +25,12 @@ public class NavigationManager {
         return sharedPreferences.getString("username", "");
     }
 
-    public static void setupNavigation(NavigationView navigationView, Activity activity, TextView navUsername) {
 
+
+
+    @SuppressLint("SetTextI18n")
+    public static void setupNavigation(NavigationView navigationView, Activity activity, TextView navUsername) {
+        LoginResponse loginResponse = new LoginResponse(); // Создание объекта LoginResponse
         String username = getUsername(activity);
         navUsername.setText(username);
 
@@ -53,9 +61,10 @@ public class NavigationManager {
                     activity.startActivity(intent);
                 }
 
-
                 return false;
             }
         });
     }
+
+
 }

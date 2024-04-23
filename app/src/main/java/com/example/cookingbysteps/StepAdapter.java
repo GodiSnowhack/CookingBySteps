@@ -2,10 +2,12 @@ package com.example.cookingbysteps;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -124,20 +126,20 @@ public class StepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void bind(Step step) {
-            textViewStepNumber.setText("Шаг " + getAdapterPosition()); // Изменено
+            textViewStepNumber.setText("Шаг " + step.getStepNumber()); // Изменено
             editTextStepDescription.setText(step.getDescription());
-            Bitmap image = step.getImage();
-            if (image != null) {
-                int newWidth = image.getWidth() / 2;
-                int newHeight = image.getHeight() / 2;
-                Bitmap resizedBitmap = resizeBitmap(image, newWidth, newHeight);
-                imageViewStep.setImageBitmap(resizedBitmap);
+            String base64Image = step.getImage();
+            if (base64Image != null && !base64Image.isEmpty()) {
+                byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                imageViewStep.setImageBitmap(decodedByte);
                 imageViewStep.setBackgroundColor(Color.TRANSPARENT);
             } else {
                 imageViewStep.setImageBitmap(null);
                 imageViewStep.setBackgroundColor(Color.BLACK);
             }
         }
+
 
     }
 
@@ -163,7 +165,7 @@ public class StepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
 
-    public void setImage(int position, Bitmap image) {
+    public void setImage(int position, String image) {
         if (position < steps.size()) {
             steps.get(position).setImage(image);
             notifyItemChanged(position);
@@ -187,7 +189,7 @@ public class StepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public class Step {
         private int stepNumber;
         private String description;
-        private Bitmap image;
+        private String image;
 
         public Step(int stepNumber) {
             this.stepNumber = stepNumber;
@@ -205,11 +207,11 @@ public class StepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             this.description = description;
         }
 
-        public Bitmap getImage() {
+        public String getImage() {
             return image;
         }
 
-        public void setImage(Bitmap image) {
+        public void setImage(String image) {
             this.image = image;
         }
     }

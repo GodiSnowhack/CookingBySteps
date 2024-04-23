@@ -21,10 +21,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".fragment.CreateRecipeFragment"
+            android:name=".CreateRecipe.CreateRecipeFragment"
             android:exported="false" />
         <activity
-            android:name=".CreateRecipePage"
+            android:name=".CreateRecipe.CreateRecipePage"
             android:exported="false" />
         <activity
             android:name=".RegistrationLogin.RegistrationActivity"

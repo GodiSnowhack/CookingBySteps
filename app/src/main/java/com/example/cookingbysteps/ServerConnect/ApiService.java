@@ -1,5 +1,6 @@
 package com.example.cookingbysteps.ServerConnect;
 
+import com.example.cookingbysteps.CreateRecipe.RecipeRequest;
 import com.example.cookingbysteps.RegistrationLogin.LoginRequest;
 import com.example.cookingbysteps.RegistrationLogin.LoginResponse;
 import com.example.cookingbysteps.RegistrationLogin.RegisterRequest;
@@ -15,4 +16,7 @@ public interface ApiService {
 
     @POST("login")
     Call<LoginResponse> login(@Body LoginRequest request);
+
+    @POST("create_recipe")
+    Call<ResponseBody> createRecipe(@Body RecipeRequest request);
 }

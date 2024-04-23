@@ -1,27 +1,37 @@
-package com.example.cookingbysteps.fragment;
+package com.example.cookingbysteps.CreateRecipe;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.cookingbysteps.CreateRecipePage;
 import com.example.cookingbysteps.R;
+import com.example.cookingbysteps.ServerConnect.ApiClient;
+import com.example.cookingbysteps.ServerConnect.ApiService;
 import com.example.cookingbysteps.StepAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CreateRecipeFragment extends Fragment {
 
-    private Bitmap descBitmap;
+    private String descBitmap;
     private String recipeTitle, description;
     private String[] ingredients;
     private List<StepAdapter.Step> steps;
@@ -104,7 +114,8 @@ public class CreateRecipeFragment extends Fragment {
         DescriptionFragment descriptionFragment = (DescriptionFragment) ((CreateRecipePage) getActivity()).getVpAdapter().getItem(0);
         if (descriptionFragment != null) {
             // Вызываем метод getBitmap() у экземпляра DescriptionFragment
-            descBitmap = descriptionFragment.getBitmap();
+            descBitmap = descriptionFragment.returnRecipeImage();
+
             // Проверяем, не является ли bitmap null
             return descBitmap != null;
         } else {
@@ -147,7 +158,7 @@ public class CreateRecipeFragment extends Fragment {
         for (StepAdapter.Step step : steps) {
             int stepNumber = step.getStepNumber();
             String description = step.getDescription();
-            Bitmap image = step.getImage();
+            String image = step.getImage();
 
             Object[] stepData = {stepNumber, description, image};
             stepDataList.add(stepData);
@@ -159,7 +170,38 @@ public class CreateRecipeFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     private void createRecipe() {
-        Toast.makeText(getContext(), "Рецепт создан", Toast.LENGTH_SHORT).show();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_data", Context.MODE_PRIVATE);
+        Integer authorId = sharedPreferences.getInt("userID", -1);
+
+        String title = this.recipeTitle;
+        String description = this.description;
+        String recipeImage = this.descBitmap; // Здесь нужно предоставить изображение в виде строки (URL или base64)
+        String[] ingredients = this.ingredients;
+        List<Object[]> stepsData = getStepDataList();
+
+        RecipeRequest request = new RecipeRequest(authorId.toString(), title, description, recipeImage, ingredients, stepsData);
+
+
+        ApiService service = ApiClient.getClient();
+        Call<ResponseBody> call = service.createRecipe(request);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Recipe created successfully", Toast.LENGTH_SHORT).show();
+                    // Закрыть активность CreateRecipePage
+                    getActivity().finish();
+                } else {
+                    Toast.makeText(getContext(), "Failed to create recipe: " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                Toast.makeText(getContext(), "Failed to create recipe: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

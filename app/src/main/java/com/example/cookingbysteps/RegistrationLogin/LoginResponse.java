@@ -3,8 +3,6 @@ package com.example.cookingbysteps.RegistrationLogin;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginResponse {
-    @SerializedName("message")
-    private String message;
 
     @SerializedName("Username")
     private String username;

@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.fragment;
+package com.example.cookingbysteps.CreateRecipe;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,16 +10,14 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.cookingbysteps.R;
@@ -37,7 +35,7 @@ public class DescriptionFragment extends Fragment {
     private EditText editRecipeTitle, editDescription;
     private Button LockButton;
     private SharedPreferences sharedPreferences;
-    private Bitmap bitmap;
+    private String base64;
     private String title = "";
     private String description = "";
 
@@ -64,6 +62,7 @@ public class DescriptionFragment extends Fragment {
         return view;
     }
 
+    // Метод для открытия выбора изображения
     private void openImageChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -71,6 +70,7 @@ public class DescriptionFragment extends Fragment {
         startActivityForResult(Intent.createChooser(intent, "Выберите изображение"), PICK_IMAGE_REQUEST);
     }
 
+    // Метод для обработки результатов выбора изображения
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -78,25 +78,31 @@ public class DescriptionFragment extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
             try {
-                bitmap = getBitmapFromUri(uri); // Сохраняем Bitmap в переменной класса
-                imageView.setImageBitmap(bitmap);
+                base64 = getBase64FromUri(uri);
+                // Установка base64 в ImageView
+                imageView.setImageBitmap(BitmapFactory.decodeByteArray(Base64.decode(base64, Base64.DEFAULT), 0, Base64.decode(base64, Base64.DEFAULT).length));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    // Метод для конвертации изображения в base64
+    public String getBase64FromUri(Uri uri) throws IOException {
+        Bitmap bitmap = getBitmapFromUri(uri);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.NO_WRAP);
+    }
+
+    // Метод для получения Bitmap из Uri
     private Bitmap getBitmapFromUri(Uri uri) throws IOException {
         ParcelFileDescriptor parcelFileDescriptor = requireContext().getContentResolver().openFileDescriptor(uri, "r");
         FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
         Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
         parcelFileDescriptor.close();
         return image;
-    }
-    public Bitmap getBitmap() {
-        // Получите ваш Bitmap из вашего места хранения, например, из ImageView или другого места, где он хранится
-        // Замените этот код на ваш реальный способ получения Bitmap
-        return bitmap;
     }
 
     // Публичный метод для получения текста из editRecipeTitle
@@ -107,5 +113,9 @@ public class DescriptionFragment extends Fragment {
     // Публичный метод для получения текста из editDescription
     public String returnRecipeDescription() {
         return description = editDescription.getText().toString();
+    }
+
+    public String returnRecipeImage(){
+        return base64;
     }
 }

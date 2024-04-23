@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.fragment;
+package com.example.cookingbysteps.CreateRecipe;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.ParcelFileDescriptor;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +22,11 @@ import android.widget.Button;
 import com.example.cookingbysteps.R;
 import com.example.cookingbysteps.StepAdapter;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -98,21 +102,29 @@ public class StepsFragment extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
             try {
-                Bitmap bitmap = getBitmapFromUri(uri);
-                if (currentStepPosition != -1) {
-                    adapter.setImage(currentStepPosition, bitmap);
-                }
+                String base64 = getBase64FromUri(uri);
+                adapter.setImage(currentStepPosition, base64);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    public String getBase64FromUri(Uri uri) throws IOException {
+        Bitmap bitmap = getBitmapFromUri(uri);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.NO_WRAP);
+    }
+
+
     private Bitmap getBitmapFromUri(Uri uri) throws IOException {
         ParcelFileDescriptor parcelFileDescriptor = requireContext().getContentResolver().openFileDescriptor(uri, "r");
         FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
         Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
         parcelFileDescriptor.close();
+        Log.d("ImageBytes", "Image bytes: " + Arrays.toString(image.getNinePatchChunk()));
         return image;
     }
 }
