@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.cookingbysteps.R;
-import com.example.cookingbysteps.StepAdapter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;

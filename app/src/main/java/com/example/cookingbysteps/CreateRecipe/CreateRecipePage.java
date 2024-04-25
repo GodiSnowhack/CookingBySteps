@@ -8,13 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.cookingbysteps.CreateRecipe.CreateRecipeFragment;
-import com.example.cookingbysteps.CreateRecipe.DescriptionFragment;
-import com.example.cookingbysteps.CreateRecipe.IngredientsFragment;
-import com.example.cookingbysteps.CreateRecipe.StepsFragment;
 import com.example.cookingbysteps.NavigationManager;
 import com.example.cookingbysteps.R;
-import com.example.cookingbysteps.VPadapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 

@@ -1,4 +1,4 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.CreateRecipe;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.cookingbysteps.R;
 
 import java.util.List;
 

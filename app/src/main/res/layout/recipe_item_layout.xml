@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Фотография рецепта -->
+
+    <!-- Название рецепта -->
+    <TextView
+        android:id="@+id/textRecipeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Название рецепта"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <!-- Описание рецепта -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+
+        <TextView
+            android:id="@+id/textRecipeDescription"
+            android:layout_width="181dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:singleLine="false"
+            android:text="Описание рецепта"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:id="@+id/imageRecipe"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="start"
+            android:adjustViewBounds="true"
+            android:paddingRight="8dp"
+            android:scaleType="fitStart"
+            android:src="@android:drawable/ic_menu_gallery" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

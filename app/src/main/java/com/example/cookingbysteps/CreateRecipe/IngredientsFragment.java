@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cookingbysteps.R;
-import com.example.cookingbysteps.TableAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

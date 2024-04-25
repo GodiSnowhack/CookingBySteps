@@ -1,4 +1,4 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.CreateRecipe;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.cookingbysteps.R;
 
 import java.util.List;
 
@@ -171,20 +173,6 @@ public class StepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             notifyItemChanged(position);
         }
     }
-
-
-    public Bitmap resizeBitmap(Bitmap bitmap, int newWidth, int newHeight) {
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
-
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, scaleHeight);
-
-        return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, false);
-    }
-
 
     public class Step {
         private int stepNumber;

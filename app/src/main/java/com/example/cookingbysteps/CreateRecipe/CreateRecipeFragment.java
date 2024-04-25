@@ -3,9 +3,7 @@ package com.example.cookingbysteps.CreateRecipe;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +16,8 @@ import androidx.fragment.app.Fragment;
 import com.example.cookingbysteps.R;
 import com.example.cookingbysteps.ServerConnect.ApiClient;
 import com.example.cookingbysteps.ServerConnect.ApiService;
-import com.example.cookingbysteps.StepAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.ResponseBody;
