@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.CreateRecipe;
+package com.example.cookingbysteps.CreateRecipe.CreateFragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cookingbysteps.CreateRecipe.TableAdapter;
 import com.example.cookingbysteps.R;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class IngredientsFragment extends Fragment {
         // Без этой строки все ломается
         rows.add(new TableAdapter.TableRow("Первый продукт", "0"));
 
-        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.IngredientsList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new TableAdapter(rows);
         recyclerView.setAdapter(adapter);
@@ -72,7 +73,7 @@ public class IngredientsFragment extends Fragment {
             String quantity = row.getQuantity();
 
             // Формируем строку данных с ингредиентом и добавляем её в список
-            String ingredientData = name + " " + quantity;
+            String ingredientData = name + " ! " + quantity;
             ingredientsList.add(ingredientData);
         }
 

@@ -1,8 +1,7 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.MainActivity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cookingbysteps.NavigationManager;
+import com.example.cookingbysteps.R;
 import com.example.cookingbysteps.ServerConnect.ApiClient;
 import com.example.cookingbysteps.ServerConnect.ApiService;
 import com.google.android.material.navigation.NavigationView;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecipeAdapter adapter;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView myNavView = findViewById(R.id.nav_view_id);
         View headerView = myNavView.getHeaderView(0);
         TextView navUsername = headerView.findViewById(R.id.UsernameText);
+
         NavigationManager.setupNavigation(myNavView, this, navUsername);
 
         recyclerView = findViewById(R.id.recyclerViewRecipes);

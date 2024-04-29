@@ -1,9 +1,10 @@
-package com.example.cookingbysteps;
+package com.example.cookingbysteps.MainActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.cookingbysteps.R;
+import com.example.cookingbysteps.RecipeView.RecipeViewActivity;
 
 import java.util.List;
 
@@ -33,6 +37,24 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         Recipe recipe = recipes.get(position);
         holder.bind(recipe);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Получаем контекст для создания интента
+                Context context = holder.itemView.getContext();
+
+                // Получаем ID выбранного рецепта
+                int recipeId = recipe.getId();
+
+                // Создаем интент для открытия активности RecipeViewActivity и передаем в него ID рецепта
+                Intent intent = new Intent(context, RecipeViewActivity.class);
+                intent.putExtra("recipe_id", recipeId);
+
+                // Запускаем активность
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -64,5 +86,3 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         }
     }
 }
-
-

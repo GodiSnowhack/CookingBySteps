@@ -15,13 +15,13 @@ public class RecipeRequest {
     private String description;
 
     @SerializedName("RecipeImage")
-    private String recipeImage; // Изображение в виде строки (URL или base64)
+    private String recipeImage;
 
     @SerializedName("Ingredients")
     private String[] ingredients;
 
     @SerializedName("Steps")
-    private List<Object[]> steps; // Массив данных для шагов
+    private List<Object[]> steps;
 
     public RecipeRequest(String authorId, String title, String description, String recipeImage, String[] ingredients, List<Object[]> steps){
         this.authorId = authorId;

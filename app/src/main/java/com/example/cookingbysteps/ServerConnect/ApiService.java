@@ -1,7 +1,11 @@
 package com.example.cookingbysteps.ServerConnect;
 
 import com.example.cookingbysteps.CreateRecipe.RecipeRequest;
-import com.example.cookingbysteps.Recipe;
+import com.example.cookingbysteps.MainActivity.Recipe;
+import com.example.cookingbysteps.RecipeView.DescriptionRecipeResponce;
+import com.example.cookingbysteps.RecipeView.DescriptionRequest;
+import com.example.cookingbysteps.RecipeView.RecipeStepsRequest;
+import com.example.cookingbysteps.RecipeView.RecipeStepsResponce;
 import com.example.cookingbysteps.RegistrationLogin.LoginRequest;
 import com.example.cookingbysteps.RegistrationLogin.LoginResponse;
 import com.example.cookingbysteps.RegistrationLogin.RegisterRequest;
@@ -26,4 +30,10 @@ public interface ApiService {
 
     @GET("get_recipes")
     Call<List<Recipe>> getRecipes();
+
+    @POST("get_recipes_description")
+    Call<DescriptionRecipeResponce> getRecipeDescription(@Body DescriptionRequest request);
+
+    @POST("get_recipe_steps")
+    Call<List<RecipeStepsResponce>> getRecipeSteps(@Body RecipeStepsRequest request);
 }

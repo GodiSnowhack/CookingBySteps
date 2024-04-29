@@ -21,16 +21,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".CreateRecipe.CreateRecipeFragment"
+            android:name=".RecipeView.RecipeViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateRecipe.CreateFragment.CreateRecipeFragment"
             android:exported="false" />
         <activity
             android:name=".CreateRecipe.CreateRecipePage"
             android:exported="false" />
         <activity
             android:name=".RegistrationLogin.RegistrationActivity"
-            android:exported="false" />
+            android:exported="true"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

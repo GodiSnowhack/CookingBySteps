@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.CreateRecipe;
+package com.example.cookingbysteps.CreateRecipe.CreateFragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

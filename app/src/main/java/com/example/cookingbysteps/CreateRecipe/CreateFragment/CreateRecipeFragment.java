@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.CreateRecipe;
+package com.example.cookingbysteps.CreateRecipe.CreateFragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.cookingbysteps.CreateRecipe.CreateRecipePage;
+import com.example.cookingbysteps.CreateRecipe.RecipeRequest;
+import com.example.cookingbysteps.CreateRecipe.StepAdapter;
 import com.example.cookingbysteps.R;
 import com.example.cookingbysteps.ServerConnect.ApiClient;
 import com.example.cookingbysteps.ServerConnect.ApiService;

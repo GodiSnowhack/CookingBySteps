@@ -5,7 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
+import android.net.Uri;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,32 +14,49 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.cookingbysteps.CreateRecipe.CreateRecipePage;
-import com.example.cookingbysteps.RegistrationLogin.LoginResponse;
+import com.example.cookingbysteps.MainActivity.MainActivity;
 import com.example.cookingbysteps.RegistrationLogin.RegistrationActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class NavigationManager {
-    private static SharedPreferences sharedPreferences;
-
+    
     public static String getUsername(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("user_data", Context.MODE_PRIVATE);
         return sharedPreferences.getString("username", "");
     }
 
-
-
-
     @SuppressLint("SetTextI18n")
     public static void setupNavigation(NavigationView navigationView, Activity activity, TextView navUsername) {
-        LoginResponse loginResponse = new LoginResponse(); // Создание объекта LoginResponse
         String username = getUsername(activity);
         navUsername.setText(username);
+
+
+        Menu menu = navigationView.getMenu();
+        MenuItem exitAccItem = menu.findItem(R.id.Exit_acc);
+        MenuItem createRecipeItem = menu.findItem(R.id.Create_recip);
+        MenuItem enterItem = menu.findItem(R.id.Enter_item);
+
+        if (username.isEmpty()) {
+            exitAccItem.setVisible(false);
+            createRecipeItem.setVisible(false);
+            enterItem.setVisible(true);
+        } else {
+            exitAccItem.setVisible(true);
+            createRecipeItem.setVisible(true);
+            enterItem.setVisible(false);
+        }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
+                if (id ==R.id.MainPage){
+                    Toast.makeText(activity,"Переход на главную страницу", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(activity, MainActivity.class);
+                    activity.startActivity(intent);
+                    activity.finish();
+                }
                 if (id == R.id.Exit_item) {
                     Toast.makeText(activity, "Выход из приложения", Toast.LENGTH_SHORT).show();
                     activity.finish();
@@ -47,6 +65,7 @@ public class NavigationManager {
                     Toast.makeText(activity, "Переход к входу", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(activity, RegistrationActivity.class);
                     activity.startActivity(intent);
+                    activity.finish();
                     return true;
                 } else if (id == R.id.Exit_acc) {
                     SharedPreferences sharedPreferences = activity.getSharedPreferences("user_data", Context.MODE_PRIVATE);
@@ -59,6 +78,13 @@ public class NavigationManager {
                     Toast.makeText(activity, "Создать рецепт", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(activity, CreateRecipePage.class);
                     activity.startActivity(intent);
+                    activity.finish();
+                } else if (id == R.id.telegram){
+                    Toast.makeText(activity, "Переход в телеграмм", Toast.LENGTH_SHORT).show();
+                    String telegramBotUrl = "https://t.me/Vkusniy_Marshrut_bot";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(telegramBotUrl));
+                    activity.startActivity(intent);
+                    return true;
                 }
 
                 return false;

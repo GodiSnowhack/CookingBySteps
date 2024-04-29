@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.CreateRecipe;
+package com.example.cookingbysteps;
 
 import android.content.SharedPreferences;
 

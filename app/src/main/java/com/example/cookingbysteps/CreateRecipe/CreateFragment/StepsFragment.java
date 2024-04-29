@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.CreateRecipe;
+package com.example.cookingbysteps.CreateRecipe.CreateFragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.cookingbysteps.CreateRecipe.StepAdapter;
 import com.example.cookingbysteps.R;
 
 import java.io.ByteArrayOutputStream;

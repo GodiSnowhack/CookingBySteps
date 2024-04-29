@@ -102,10 +102,6 @@ public class TableAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-
-
-
-
     @Override
     public int getItemCount() {
         return rows.size();
