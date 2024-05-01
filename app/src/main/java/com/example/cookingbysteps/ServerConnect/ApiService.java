@@ -1,6 +1,9 @@
 package com.example.cookingbysteps.ServerConnect;
 
 import com.example.cookingbysteps.CreateRecipe.RecipeRequest;
+import com.example.cookingbysteps.LikedRecept.GetLikedReceptRequest;
+import com.example.cookingbysteps.LikedRecept.GetLikedReceptResponce;
+import com.example.cookingbysteps.LikedRecept.LikedRecipe;
 import com.example.cookingbysteps.MainActivity.Recipe;
 import com.example.cookingbysteps.RecipeView.Requests.CheckRecipeLikeRequest;
 import com.example.cookingbysteps.RecipeView.Requests.DescriptionRequest;
@@ -56,8 +59,8 @@ public interface ApiService {
     @POST("check_liked_recipe")
     Call<CheckRecipeLikeResponce> checkLikedRecipe(@Body CheckRecipeLikeRequest request);
 
-    //@POST("get_liked_recept")
-    //Call<GetLikedReceptResponce> getLikedRecept(@Body GetLikedReceptRequest request);
+    @POST("get_liked_recept")
+    Call<List<LikedRecipe>> getLikedRecept(@Body GetLikedReceptRequest request);
 
     @POST("/delete_like")
     Call<ResponseBody> unlikeRecept(@Body UnlikeReceptRequest request);

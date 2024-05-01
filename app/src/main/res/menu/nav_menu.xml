@@ -24,6 +24,10 @@
         android:id="@+id/telegram"
         android:title="Нашли ошибку"/>
 
+    <item
+        android:id="@+id/likedRecipes"
+        android:title="Понравившиеся рецепты"/>
+
 
     <!-- Добавьте другие элементы меню, если нужно -->
 </menu>

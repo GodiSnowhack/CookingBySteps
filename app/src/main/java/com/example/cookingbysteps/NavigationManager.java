@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.cookingbysteps.CreateRecipe.CreateRecipePage;
+import com.example.cookingbysteps.LikedRecept.LikedReceptActivity;
 import com.example.cookingbysteps.MainActivity.MainActivity;
 import com.example.cookingbysteps.RegistrationLogin.RegistrationActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -35,14 +36,17 @@ public class NavigationManager {
         MenuItem exitAccItem = menu.findItem(R.id.Exit_acc);
         MenuItem createRecipeItem = menu.findItem(R.id.Create_recip);
         MenuItem enterItem = menu.findItem(R.id.Enter_item);
+        MenuItem likedRecipes = menu.findItem(R.id.likedRecipes);
 
         if (username.isEmpty()) {
             exitAccItem.setVisible(false);
             createRecipeItem.setVisible(false);
+            likedRecipes.setVisible(false);
             enterItem.setVisible(true);
         } else {
             exitAccItem.setVisible(true);
             createRecipeItem.setVisible(true);
+            likedRecipes.setVisible(true);
             enterItem.setVisible(false);
         }
 
@@ -85,6 +89,11 @@ public class NavigationManager {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(telegramBotUrl));
                     activity.startActivity(intent);
                     return true;
+                } else if (id == R.id.likedRecipes){
+                    Toast.makeText(activity, "Понравившиеся рецепты", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(activity, LikedReceptActivity.class);
+                    activity.startActivity(intent);
+                    activity.finish();
                 }
 
                 return false;

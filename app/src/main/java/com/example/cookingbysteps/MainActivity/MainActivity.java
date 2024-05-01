@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewRecipes);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Запрос на сервер для получения списка рецептов
 
         fetchRecipes();
     }
