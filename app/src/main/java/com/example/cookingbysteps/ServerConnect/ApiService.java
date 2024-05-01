@@ -2,10 +2,17 @@ package com.example.cookingbysteps.ServerConnect;
 
 import com.example.cookingbysteps.CreateRecipe.RecipeRequest;
 import com.example.cookingbysteps.MainActivity.Recipe;
-import com.example.cookingbysteps.RecipeView.DescriptionRecipeResponce;
-import com.example.cookingbysteps.RecipeView.DescriptionRequest;
-import com.example.cookingbysteps.RecipeView.RecipeStepsRequest;
-import com.example.cookingbysteps.RecipeView.RecipeStepsResponce;
+import com.example.cookingbysteps.RecipeView.Requests.CheckRecipeLikeRequest;
+import com.example.cookingbysteps.RecipeView.Requests.DescriptionRequest;
+import com.example.cookingbysteps.RecipeView.Requests.LikedReceptRequest;
+import com.example.cookingbysteps.RecipeView.Requests.RecipeGetCommentsRequest;
+import com.example.cookingbysteps.RecipeView.Requests.RecipeInsertCommentsRequest;
+import com.example.cookingbysteps.RecipeView.Requests.RecipeStepsRequest;
+import com.example.cookingbysteps.RecipeView.Requests.UnlikeReceptRequest;
+import com.example.cookingbysteps.RecipeView.Responces.CheckRecipeLikeResponce;
+import com.example.cookingbysteps.RecipeView.Responces.DescriptionRecipeResponce;
+import com.example.cookingbysteps.RecipeView.Responces.RecipeCommentsResponce;
+import com.example.cookingbysteps.RecipeView.Responces.RecipeStepsResponce;
 import com.example.cookingbysteps.RegistrationLogin.LoginRequest;
 import com.example.cookingbysteps.RegistrationLogin.LoginResponse;
 import com.example.cookingbysteps.RegistrationLogin.RegisterRequest;
@@ -36,4 +43,22 @@ public interface ApiService {
 
     @POST("get_recipe_steps")
     Call<List<RecipeStepsResponce>> getRecipeSteps(@Body RecipeStepsRequest request);
+
+    @POST("get_recipe_comments")
+    Call<List<RecipeCommentsResponce>> getRecipeComments(@Body RecipeGetCommentsRequest request);
+
+    @POST("insert_recipe_comments")
+    Call<ResponseBody> insertRecipeComments(@Body RecipeInsertCommentsRequest request);
+
+    @POST("liked_recept")
+    Call<ResponseBody> likedRecept(@Body LikedReceptRequest request);
+
+    @POST("check_liked_recipe")
+    Call<CheckRecipeLikeResponce> checkLikedRecipe(@Body CheckRecipeLikeRequest request);
+
+    //@POST("get_liked_recept")
+    //Call<GetLikedReceptResponce> getLikedRecept(@Body GetLikedReceptRequest request);
+
+    @POST("/delete_like")
+    Call<ResponseBody> unlikeRecept(@Body UnlikeReceptRequest request);
 }

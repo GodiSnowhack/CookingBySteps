@@ -1,12 +1,12 @@
-package com.example.cookingbysteps.RecipeView;
+package com.example.cookingbysteps.RecipeView.Requests;
 
 import com.google.gson.annotations.SerializedName;
 
-public class RecipeStepsRequest {
+public class DescriptionRequest {
     @SerializedName("recipeID")
     private Integer recipeID;
 
-    public RecipeStepsRequest(Integer id){
+    public DescriptionRequest(Integer id){
         this.recipeID = id;
     }
 }

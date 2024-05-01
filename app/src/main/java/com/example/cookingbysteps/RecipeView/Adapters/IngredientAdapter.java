@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.RecipeView;
+package com.example.cookingbysteps.RecipeView.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cookingbysteps.R;
+import com.example.cookingbysteps.RecipeView.Ingredient;
 
 import java.util.List;
 

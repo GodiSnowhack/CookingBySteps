@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.RecipeView;
+package com.example.cookingbysteps.RecipeView.Responces;
 
 import com.google.gson.annotations.SerializedName;
 

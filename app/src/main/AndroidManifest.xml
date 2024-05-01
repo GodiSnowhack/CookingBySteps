@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".LikedRecept.LikedReceptActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecipeView.RecipeViewActivity"
             android:exported="false" />
         <activity
@@ -31,7 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".RegistrationLogin.RegistrationActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity.MainActivity"
             android:exported="true">

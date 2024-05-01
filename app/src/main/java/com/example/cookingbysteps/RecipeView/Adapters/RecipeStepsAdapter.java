@@ -1,4 +1,4 @@
-package com.example.cookingbysteps.RecipeView;
+package com.example.cookingbysteps.RecipeView.Adapters;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cookingbysteps.R;
+import com.example.cookingbysteps.RecipeView.Responces.RecipeStepsResponce;
 
 import java.util.List;
 
