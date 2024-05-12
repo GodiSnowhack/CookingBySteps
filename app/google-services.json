@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "59917797156",
+    "project_id": "vkusnamarsh",
+    "storage_bucket": "vkusnamarsh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59917797156:android:6d7c2477bf432ed77795b1",
+        "android_client_info": {
+          "package_name": "com.example.cookingbysteps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByMmRf_oMG-U_sF7LE8pH4kqvoYZKrSc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

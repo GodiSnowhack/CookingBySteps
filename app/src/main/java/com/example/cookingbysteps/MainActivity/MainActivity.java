@@ -1,13 +1,12 @@
 package com.example.cookingbysteps.MainActivity;
 
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +16,7 @@ import com.example.cookingbysteps.R;
 import com.example.cookingbysteps.ServerConnect.ApiClient;
 import com.example.cookingbysteps.ServerConnect.ApiService;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
 
@@ -44,6 +44,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewRecipes);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Получение токена устройства для регистрации в Firebase Cloud Messaging
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w("FCM", "Fetching FCM registration token failed", task.getException());
+                        return;
+                    }
+
+                    // Получение токена
+                    String token = task.getResult();
+                    Log.d("FCM", "FCM token: " + token);
+                });
 
         fetchRecipes();
     }
