@@ -91,6 +91,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         saveUserData(loginResponse.getUsername(), loginResponse.getEmail(), loginResponse.getUserId());
 
                         Toast.makeText(RegistrationActivity.this, "Login successful. Welcome, " + loginResponse.getUsername(), Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 } else {
                     Toast.makeText(RegistrationActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
@@ -129,6 +130,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 Toast.makeText(RegistrationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                finish();
             }
 
             @Override
