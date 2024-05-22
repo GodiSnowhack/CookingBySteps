@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -155,7 +156,9 @@ public class RecipeDescriptionFragment extends Fragment {
 
     private void putData(View view, String title, String description, String recipesImage, String[] ingredientsName) {
         recipeTitle.setText(title);
+        recipeTitle.setMovementMethod(new ScrollingMovementMethod());
         recipeDescription.setText(description);
+        recipeDescription.setMovementMethod(new ScrollingMovementMethod());
 
         byte[] decodedImage = Base64.decode(recipesImage, Base64.NO_WRAP);
         Bitmap bitmap = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.length);

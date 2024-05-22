@@ -31,6 +31,14 @@
             android:orientation="vertical"
             android:visibility="gone">
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Регистрация"
+                android:textSize="24sp" />
+
             <EditText
                 android:id="@+id/UsernameEditRegis"
                 android:layout_width="match_parent"
@@ -84,6 +92,14 @@
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="1dp"
             tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Авторизация"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/EmailEditLogin"

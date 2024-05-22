@@ -66,6 +66,7 @@ public class RecipeCommentsFragment extends Fragment {
                         commentsList.clear();
                         commentsList.addAll(recipeCommentsResponces);
                         commentsAdapter.notifyDataSetChanged();
+                        Toast.makeText(getContext(), "Рецепт загружен", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getContext(), "Ответ сервера пуст", Toast.LENGTH_SHORT).show();
                     }
