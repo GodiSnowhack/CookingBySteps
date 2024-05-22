@@ -2,13 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/rounded_edit_text"
+    android:orientation="vertical"
+    android:paddingStart="20dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp">
 
     <TextView
         android:id="@+id/textViewStepNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Шаг 1" />
+        android:text="Шаг 1"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,14 +26,14 @@
             android:layout_width="400px"
             android:layout_height="wrap_content"
             android:layout_marginRight="50px"
-            android:hint="Описание шага" />
+            android:hint="Описание шага"
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/imageViewStep"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginTop="8dp"
-            android:background="@color/black"
             android:src="@android:drawable/ic_menu_gallery" />
     </LinearLayout>
 </LinearLayout>

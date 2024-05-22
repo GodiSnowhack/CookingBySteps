@@ -36,7 +36,7 @@ public class RecipeCommentsAdapter extends RecyclerView.Adapter<RecipeCommentsAd
         RecipeCommentsResponce currentStep = commentsList.get(position);
         holder.textCommentsAuthor.setText(currentStep.getUsername());
         holder.textCommentsText.setText(currentStep.getComments());
-        holder.textCommentsGrade.setText(currentStep.getGrade());
+        holder.textCommentsGrade.setText(currentStep.getGrade() + "⭐");
     }
 
     @Override

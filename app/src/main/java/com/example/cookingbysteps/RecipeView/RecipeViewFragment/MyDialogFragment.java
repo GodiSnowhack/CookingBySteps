@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -25,12 +26,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MyDialogFragment extends DialogFragment {
+    private static final String TAG = "MyDialogFragment";
     private EditText commentEditText;
     private RatingBar ratingBar;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_layout, null);
         Integer receptID = getArguments().getInt("receptID");
@@ -42,14 +44,14 @@ public class MyDialogFragment extends DialogFragment {
                 .setTitle("Оставить комментарий и оценку")
                 .setPositiveButton("Отправить", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_data", Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("user_data", Context.MODE_PRIVATE);
                         Integer authorId = sharedPreferences.getInt("userID", -1);
                         String comment = commentEditText.getText().toString();
                         float floatRating = ratingBar.getRating();
                         int intRating = (int) floatRating;
                         Integer ratingInteger = Integer.valueOf(intRating);
 
-                        RecipeInsertCommentsRequest request = new RecipeInsertCommentsRequest(receptID,authorId,ratingInteger,comment);
+                        RecipeInsertCommentsRequest request = new RecipeInsertCommentsRequest(receptID, authorId, ratingInteger, comment);
 
                         ApiService service = ApiClient.getClient();
                         Call<ResponseBody> call = service.insertRecipeComments(request);
@@ -57,19 +59,26 @@ public class MyDialogFragment extends DialogFragment {
                         call.enqueue(new Callback<ResponseBody>() {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                if (response.isSuccessful()){
-                                    Toast.makeText(getContext(), "Комментарий написан", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    Toast.makeText(getContext(), "Создать комментарий не получилось: " + response.message(), Toast.LENGTH_SHORT).show();
+                                if (response.isSuccessful()) {
+                                    if (getContext() != null) {
+                                        Toast.makeText(getContext(), "Комментарий написан", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Log.e(TAG, "Создать комментарий не получилось: " + response.message());
+                                    if (getContext() != null) {
+                                        Toast.makeText(getContext(), "Создать комментарий не получилось: " + response.message(), Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                Toast.makeText(getContext(), "Создать комментарий не получилось: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                Log.e(TAG, "Создать комментарий не получилось: " + t.getLocalizedMessage());
+                                if (getContext() != null) {
+                                    Toast.makeText(getContext(), "Создать комментарий не получилось: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
-                        // Здесь вы можете использовать комментарий и оценку
                     }
                 })
                 .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
@@ -88,5 +97,3 @@ public class MyDialogFragment extends DialogFragment {
         return dialogFragment;
     }
 }
-
-

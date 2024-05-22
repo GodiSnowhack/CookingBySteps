@@ -7,9 +7,8 @@
     tools:context=".MainActivity.MainActivity">
 
 
-
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         tools:ignore="UselessLeaf">
@@ -18,7 +17,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRecipes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp" />
 
     </LinearLayout>
 

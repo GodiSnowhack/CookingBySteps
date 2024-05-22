@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private RecipeAdapter adapter;
     private Integer userId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +53,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE);
         userId = sharedPreferences.getInt("userID", -1);
 
-        if (userId == -1) {
+        if (userId > 0) {
             showLoginDialog();
         }
-
-
 
         // Получение токена устройства для регистрации в Firebase Cloud Messaging
         FirebaseMessaging.getInstance().getToken()
@@ -67,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.w("FCM", "Fetching FCM registration token failed", task.getException());
                         return;
                     }
-
                     // Получение токена
                     String token = task.getResult();
                     Log.d("FCM", "FCM token: " + token);
@@ -129,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Добро пожаловать");
         builder.setMessage("Вы находитесь на главной странице приложения. Тут можно будет посмотреть весь список рецептов." +
-                "Для навигации по приложении прошу потянуть слева направо навигационную панель.");
+                " Для навигации по приложении прошу потянуть слева направо навигационную панель.");
 
         builder.setNegativeButton("ОК", new DialogInterface.OnClickListener() {
             @Override

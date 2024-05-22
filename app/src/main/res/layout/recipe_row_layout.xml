@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="5sp"
+    android:background="@drawable/rounded_edit_text"
     android:orientation="horizontal">
 
     <TextView
@@ -9,11 +11,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:hint="Введите название" />
+        android:hint="Введите название"
+        android:paddingStart="10sp"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/TextQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Введите количество" />
+        android:hint="Введите количество"
+        android:textSize="18sp" />
 </LinearLayout>

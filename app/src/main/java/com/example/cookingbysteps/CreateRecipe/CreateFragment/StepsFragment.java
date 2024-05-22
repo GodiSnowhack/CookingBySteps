@@ -79,12 +79,6 @@ public class StepsFragment extends Fragment {
         return steps;
     }
 
-    public void onImageClick(int position) {
-        // Обработка нажатия на изображение для элемента списка с позицией position
-        // Здесь вы можете выполнить дополнительные действия, связанные с этой позицией
-        // Например, показать диалог выбора изображения для соответствующего шага
-        openImageChooser();
-    }
 
     private void openImageChooser() {
         Intent intent = new Intent();

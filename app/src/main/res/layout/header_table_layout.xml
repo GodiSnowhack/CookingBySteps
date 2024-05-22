@@ -5,15 +5,17 @@
 
     <TextView
         android:id="@+id/textViewColumnName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="198dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="Название" />
+        android:text="Название"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textViewColumnQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Количество" />
+        android:text="Количество"
+        android:textSize="16sp" />
 
 </LinearLayout>

@@ -11,12 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Header" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_settings_24"/>
+        android:text="Header"
+        android:textSize="20sp" />
 
 
 </LinearLayout>

@@ -135,11 +135,7 @@ public class StepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 imageViewStep.setImageBitmap(decodedByte);
-                imageViewStep.setBackgroundColor(Color.TRANSPARENT);
-            } else {
-                imageViewStep.setImageBitmap(null);
-                imageViewStep.setBackgroundColor(Color.BLACK);
-            }
+            } 
         }
 
 

@@ -7,8 +7,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSteps"
-        android:layout_width="401dp"
-        android:layout_height="580dp" />
+        android:layout_width="match_parent"
+        android:layout_height="659dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

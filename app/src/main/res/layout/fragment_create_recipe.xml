@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="вы уверены что хотите создать этот рецепт?"
-        android:textSize="16sp"
+        android:layout_width="327dp"
+        android:layout_height="57dp"
+        android:text="Вы уверены что хотите создать этот рецепт?"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

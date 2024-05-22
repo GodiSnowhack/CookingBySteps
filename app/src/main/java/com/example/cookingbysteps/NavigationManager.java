@@ -29,7 +29,7 @@ public class NavigationManager {
     @SuppressLint("SetTextI18n")
     public static void setupNavigation(NavigationView navigationView, Activity activity, TextView navUsername) {
         String username = getUsername(activity);
-        navUsername.setText(username);
+        navUsername.setText("Добро пожаловать, " + username +"!");
 
 
         Menu menu = navigationView.getMenu();

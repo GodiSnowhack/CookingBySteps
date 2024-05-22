@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/rounded_corner"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -16,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Название рецепта"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
@@ -36,13 +38,13 @@
             android:layout_marginEnd="8dp"
             android:singleLine="false"
             android:text="Описание рецепта"
-            android:textSize="16sp"
+            android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
         <ImageView
             android:id="@+id/imageRecipe"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_gravity="start"
             android:adjustViewBounds="true"
             android:paddingRight="8dp"

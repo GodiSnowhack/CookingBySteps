@@ -13,20 +13,20 @@
         android:title="Создать рецепт"/>
 
     <item
-        android:id="@+id/Exit_acc"
-        android:title="Выход из аккаунта"/>
-
-    <item
-        android:id="@+id/Exit_item"
-        android:title="Выход" />
+        android:id="@+id/likedRecipes"
+        android:title="Понравившиеся рецепты"/>
 
     <item
         android:id="@+id/telegram"
         android:title="Нашли ошибку"/>
 
     <item
-        android:id="@+id/likedRecipes"
-        android:title="Понравившиеся рецепты"/>
+        android:id="@+id/Exit_acc"
+        android:title="Выход из аккаунта"/>
+
+    <item
+        android:id="@+id/Exit_item"
+        android:title="Выход" />
 
 
     <!-- Добавьте другие элементы меню, если нужно -->

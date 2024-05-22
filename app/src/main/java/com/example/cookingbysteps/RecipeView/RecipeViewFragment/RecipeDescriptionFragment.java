@@ -73,8 +73,8 @@ public class RecipeDescriptionFragment extends Fragment {
 
                     Integer liked = checkRecipeLikeResponce.getLiked();
                     if (liked == 1){
-                        likeButton.setVisibility(View.VISIBLE);
-                        unlikeButton.setVisibility(View.INVISIBLE);
+                        likeButton.setVisibility(View.INVISIBLE);
+                        unlikeButton.setVisibility(View.VISIBLE);
                     }
                     if (liked == 0)
                     {
@@ -135,7 +135,6 @@ public class RecipeDescriptionFragment extends Fragment {
                     DescriptionRecipeResponce descriptionRecipeResponce = response.body();
                     if (descriptionRecipeResponce != null) {
                         putData(view, descriptionRecipeResponce.getTitle(), descriptionRecipeResponce.getDescription(), descriptionRecipeResponce.getRecipesImage(), descriptionRecipeResponce.getIngredientsName());
-                        Toast.makeText(getContext(), "Рецепт загружен", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getContext(), "Ответ сервера пуст", Toast.LENGTH_SHORT).show();
                     }

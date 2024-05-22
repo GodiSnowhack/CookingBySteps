@@ -65,7 +65,6 @@ public class RecipeStepsFragment extends Fragment {
                         stepsList.clear();
                         stepsList.addAll(recipeStepsResponce);
                         stepsAdapter.notifyDataSetChanged();
-                        Toast.makeText(getContext(), "Рецепт загружен", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getContext(), "Ответ сервера пуст", Toast.LENGTH_SHORT).show();
                     }

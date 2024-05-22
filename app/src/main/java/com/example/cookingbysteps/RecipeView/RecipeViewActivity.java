@@ -5,12 +5,16 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
+import com.example.cookingbysteps.NavigationManager;
 import com.example.cookingbysteps.R;
 import com.example.cookingbysteps.RecipeView.RecipeViewFragment.RecipeCommentsFragment;
 import com.example.cookingbysteps.RecipeView.RecipeViewFragment.RecipeDescriptionFragment;
 import com.example.cookingbysteps.RecipeView.RecipeViewFragment.RecipeStepsFragment;
 import com.example.cookingbysteps.VPadapter;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class RecipeViewActivity extends AppCompatActivity {
@@ -23,6 +27,12 @@ public class RecipeViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_view);
+
+        NavigationView myNavView = findViewById(R.id.nav_view_id);
+        View headerView = myNavView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.UsernameText);
+
+        NavigationManager.setupNavigation(myNavView, this, navUsername);
 
         id = getIntent().getIntExtra("recipe_id", -1);
 

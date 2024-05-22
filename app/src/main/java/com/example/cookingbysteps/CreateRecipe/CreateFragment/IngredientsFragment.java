@@ -48,7 +48,7 @@ public class IngredientsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Добавляем новую строку после первой строки
-                rows.add(1, new TableAdapter.TableRow("Новый продукт", "0"));
+                rows.add(1, new TableAdapter.TableRow("",""));
                 adapter.notifyItemInserted(1);
 
                 // Прокрутка RecyclerView к добавленной строке
