@@ -3,6 +3,7 @@ package com.example.cookingbysteps.RegistrationLogin;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cookingbysteps.CreateRecipe.CreateRecipePage;
+import com.example.cookingbysteps.MainActivity.MainActivity;
 import com.example.cookingbysteps.NavigationManager;
 import com.example.cookingbysteps.R;
 import com.example.cookingbysteps.ServerConnect.ApiClient;
@@ -91,6 +94,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         saveUserData(loginResponse.getUsername(), loginResponse.getEmail(), loginResponse.getUserId());
 
                         Toast.makeText(RegistrationActivity.this, "Login successful. Welcome, " + loginResponse.getUsername(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
+                        startActivity(intent);
                         finish();
                     }
                 } else {

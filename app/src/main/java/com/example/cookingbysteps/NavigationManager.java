@@ -69,7 +69,6 @@ public class NavigationManager {
                     Toast.makeText(activity, "Переход к входу", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(activity, RegistrationActivity.class);
                     activity.startActivity(intent);
-                    activity.finish();
                     return true;
                 } else if (id == R.id.Exit_acc) {
                     SharedPreferences sharedPreferences = activity.getSharedPreferences("user_data", Context.MODE_PRIVATE);
@@ -77,6 +76,7 @@ public class NavigationManager {
                     editor.clear();
                     editor.apply();
                     Toast.makeText(activity, "Выход из аккаунта", Toast.LENGTH_SHORT).show();
+                    activity.finish();
                     return true;
                 } else if (id == R.id.Create_recip){
                     Toast.makeText(activity, "Создать рецепт", Toast.LENGTH_SHORT).show();
